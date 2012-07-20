@@ -4,92 +4,105 @@
 virtualenvwrapper
 #################
 
-virtualenvwrapper is a set of extensions to Ian Bicking's `virtualenv
-<http://pypi.python.org/pypi/virtualenv>`_ tool.  The extensions include
-wrappers for creating and deleting virtual environments and otherwise
-managing your development workflow, making it easier to work on more
-than one project at a time without introducing conflicts in their
-dependencies.
+virtualenvwrapper は Ian Bicking の 
+`virtualenv <http://pypi.python.org/pypi/virtualenv>`_ ツールの
+拡張機能です。この拡張機能は仮想環境の作成・削除を行ったり、
+開発ワークフローを管理するラッパーを提供します。このラッパーを
+使用することで、開発環境の依存による競合を発生させず、1つ以上の
+プロジェクトで同時に作業し易くなります。
 
-========
-Features
-========
+====
+機能
+====
 
-1.  Organizes all of your virtual environments in one place.
+1. 1つの開発環境で全ての仮想環境を構成する
 
-2.  Wrappers for creating, copying and deleting environments, including
-    user-configurable hooks.
+2. 仮想環境を管理(作成、削除、コピー)するラッパー
 
-3.  Use a single command to switch between environments.
+3. たった1つのコマンドで仮想環境を切り替える
 
-4.  Tab completion for commands that take a virtual environment as
-    argument.
+4. コマンドの引数として仮想環境がタブ補完できる
 
-5. User-configurable hooks for all operations.
+5. 全ての操作に対してユーザ設定でフックできる(:ref:`scripts` を参照)
 
-6. Plugin system for more creating sharable extensions.
+6. さらに共有可能な拡張機能を作成できるプラグインシステム(:ref:`plugins` を参照)
 
-Rich Leland has created a short `screencast
-<http://mathematism.com/2009/jul/30/presentation-pip-and-virtualenv/>`__
-showing off the features of virtualenvwrapper.
+Rich Leland は virtualenvwrapper の機能を誇示するために短い
+`スクリーンキャスト <http://mathematism.com/2009/jul/30/presentation-pip-and-virtualenv/>`__
+を作成しました。
 
 ============
-Installation
+インストール
 ============
 
-See the `project documentation
-<http://www.doughellmann.com/docs/virtualenvwrapper/>`__ for
-installation and setup instructions.
+インストールとインフラを設定するには
+`プロジェクトのドキュメント <http://www.doughellmann.com/docs/virtualenvwrapper/ja/>`__ 
+を参照してください。
 
-Supported Shells
+サポートシェル
+==============
+
+virtualenvwrapper は Bourne シェル互換の構文で定義された
+シェル *関数* のセットです。それは `bash`, `ksh` と `zsh` で
+テストされています。その他のシェルでも動作するかもしれませんが、
+ここに記載されていないシェルで動作することを発見したら私に
+教えてください。もしあなたがその他のシェルで動作させるために
+virtualenvwrapper を完全に書き直すことなく修正できるなら、
+bitbucket のプロジェクトページを通じて pull リクエストを
+送ってください。あなたが非互換なシェル上で動作させるクローンを
+作成するなら、このページでリンクを張るので私に連絡してください。
+
+Python バージョン
+=================
+
+virtualenvwrapper は Python 2.4 - 2.7 でテストされています。
+
+1.x からのアップグレード
+========================
+
+ラッパー関数を含むシェルスクリプトは 2.x バージョンで bash 
+以外のシェルをサポートするためにその名前が変更されました。
+あなたの起動ファイルの ``source /usr/local/bin/virtualenvwrapper_bashrc`` を
+``source /usr/local/bin/virtualenvwrapper.sh`` へ変更してください。
+
+====
+貢献
+====
+
+virtualenvwrapper のコアへ新しい機能を追加する前に、
+その代わりに機能拡張として実装すべきかどうかをよく考えてください。
+
+パッチを提供するための tips は
+`開発者ドキュメント <http://www.doughellmann.com/docs/virtualenvwrapper/developers.html>`__
+を参照してください。
+
+========
+サポート
+========
+
+問題や機能を議論するには
+`virtualenvwrapper Google Group <http://groups.google.com/group/virtualenvwrapper/>`__
+に参加してください。
+
+`BitBucket のバグトラッカー <http://bitbucket.org/dhellmann/virtualenvwrapper/>`__
+でバグを報告してください。
+
+シェルエイリアス
 ================
 
-virtualenvwrapper is a set of shell *functions* defined in Bourne
-shell compatible syntax.  It is tested under `bash`, `ksh`, and `zsh`.
-It may work with other shells, so if you find that it does work with a
-shell not listed here please let me know.  If you can modify it to
-work with another shell, without completely rewriting it, send a pull
-request through the bitbucket project page.  If you write a clone to
-work with an incompatible shell, let me know and I will link to it
-from this page.
-
-Python Versions
-===============
-
-virtualenvwrapper is tested under Python 2.6, 2.7 and 3.2.
-
-=======
-Support
-=======
-
-Join the `virtualenvwrapper Google Group
-<http://groups.google.com/group/virtualenvwrapper/>`__ to discuss
-issues and features.  
-
-Report bugs via the `bug tracker on BitBucket
-<http://bitbucket.org/dhellmann/virtualenvwrapper/>`__.
-
-Shell Aliases
-=============
-
-Since virtualenvwrapper is largely a shell script, it uses shell
-commands for a lot of its actions.  If your environment makes heavy
-use of shell aliases or other customizations, you may encounter
-issues.  Before reporting bugs in the bug tracker, please test
-*without* your aliases enabled.  If you can identify the alias causing
-the problem, that will help make virtualenvwrapper more robust.
+virtualenvwrapper は大きなシェルスクリプトなので、
+多くのアクションはシェルコマンドを使用します。
+あなたの環境が多くのシェルエイリアスやその他の
+カスタマイズを行っているなら、何かしら問題に
+遭遇する可能性があります。バグトラッカーにバグを
+報告する前に、そういったエイリアスを無効な *状態* で
+テストしてください。あなたがその問題を引き起こす
+エイリアスを判別できるなら virtualenvwrapper を
+もっと堅牢なものにすることに役立つでしょう。
 
 ==========
-Change Log
+ライセンス
 ==========
-
-The `release history`_ is part of the project documentation.
-
-.. _release history: http://www.doughellmann.com/docs/virtualenvwrapper/history.html
-
-=======
-License
-=======
 
 Copyright Doug Hellmann, All Rights Reserved
 
